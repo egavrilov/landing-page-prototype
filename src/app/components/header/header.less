@@ -1,0 +1,60 @@
+.sl-header {
+  border: none;
+  border-top: 8px red solid;
+  padding: 20px 0;
+  background: transparent;
+
+  @media (max-width: @screen-xs-max) {
+    margin: 0 auto;
+  }
+
+  .sl-logo {
+    width: 184px;
+    height: 41px;
+    background: url('http://cdn1.love.sl/love.sl/lookbook/images/logo.svg') 0 0 no-repeat;
+    background-size: 184px 41px;
+
+    @media (max-width: @screen-xs-max) {
+      margin: 0 auto;
+    }
+  }
+
+  .sl-logo__brilliant {
+    .sl-logo;
+    margin: 0 auto;
+  }
+
+  .product--image {
+    background-size: contain;
+    height: 200px;
+  }
+}
+
+.navbar-header {
+  @media (min-width: @screen-sm-min) {
+    display: inline-block !important;
+  }
+
+  .navbar-brand {
+    @media (max-width: @screen-xs-max) {
+      float: none;
+    }
+  }
+}
+
+ul.nav {
+  float: right;
+
+  @media (max-width: @screen-xs-max) {
+    display: block;
+    float: none;
+    margin: 1em auto 0;
+    text-align: center;
+  }
+
+  .item {
+    height: 100%;
+    display: inline-block;
+  }
+
+}

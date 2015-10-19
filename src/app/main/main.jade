@@ -1,0 +1,123 @@
+include ../components/header/header
+
+.content-section.sl-content(ng-controller='MainController as main')
+  .container
+    .sl-action.row
+      .preview.col-lg-8.col-md-8.col-sm-12.col-xs-12
+      .action-terms.col-lg-4.col-md-4.col-sm-12.col-xs-12
+        .terms
+          h4 ДЛЯ ПОЛУЧЕНИЯ ПОДАРКА:
+          ol
+            li Посетите любой магазин SUNLIGHT участвующий в акции.
+            li Сообщите консультанту Ваш промокод и номер телефона.
+            li Получите подарок – один из трех шармов на Ваш выбор *.
+          form.action--form.col-lg-12.row(ng-submit='main.register()', ng-class='{"action--form-activated": main.activated, "action--form-invalid": main.invalid}')
+            .action--input-phone.col-lg-12.col-md-12.col-sm-6.col-xs-12
+              .action--input-prefix.col-lg-2.col-md-2.col-sm-3.col-xs-3 +7
+              input.col-lg-10.col-md-10.col-sm-9.col-xs-9(type='text', placeholder='___ ___ __ __', ng-model='main.phone', ng-if='!main.isMobile')
+              input.col-lg-10.col-md-10.col-sm-9.col-xs-9(type='number', placeholder='___ ___ __ __', ng-model='main.phone', ng-if='main.isMobile')
+              .action--message-invalid мобильный телефон в формате 9123456789
+              label(for='termsAgree')
+                input(type='checkbox', ng-model='main.agree', id='termsAgree')
+                span &nbsp;Я согласен с условиями акции
+              label(for='subscribe')
+                input(type='checkbox', ng-model='main.subscribe', id='subscribe')
+                span &nbsp;Подписаться на новостную рассылку
+            .action--submit.col-lg-12.col-md-12.col-sm-6.col-xs-12
+              button(type='submit', ng-disabled='!main.agree || main.isLocked') Получить подарок
+            .action--message-activated
+              p Спасибо!
+              p На ваш номер телефона выслан промокод участника акции.
+
+    .row
+      .col-lg-12
+        h2 Центры выдачи подарков
+        .sl-region
+          .region--now Вы находитесь в регионе
+          select.region--form(ng-options='region.id as region.name for region in main.model.regions',
+            ng-model='main.model.region', ng-change='main.trackRegion()')
+        .sl-outlets.row(vertilize-container)
+          .col-lg-4.col-md-4.col-sm-6.col-xs-12(ng-repeat='outlet in main.model.outlets')
+            .outlet(vertilize)
+              .col-lg-9.col-md-9.col-sm-9.col-xs-9
+                .outlet--metro-line(ng-if='outlet.metros.length', ng-style='{ backgroundColor: "#"+outlet.metros[0].color }') М
+                .outlet--metro
+                  span(ng-bind='::outlet.metros[0].name', ng-if='outlet.metros.length')
+                  span(ng-if='outlet.metros.length') &nbsp;
+                  span.outlet--name(ng-bind='::outlet.mall')
+                .outlet--address(ng-bind='::outlet.address')
+                .outlet--open-hours(ng-bind='::outlet.opening_hours')
+              .col-lg-3.col-md-3.col-sm-3.col-xs-3
+                a.outlet--map-wrapper(ng-click='main.renderMarker(outlet.geo)', ng-if='outlet.geo.length')
+                  .outlet--map Маршрут
+    //-.row
+      .sl-products.col-lg-12
+        h2 Шармы
+        .product.col-lg-3.col-md-4.col-sm-6.col-xs-6
+          .col-lg-12.col-md-12.col-sm-12
+            .product--image(ng-style='{backgroundImage: "url(http://l1.sl-love.ru/upload/iblock/a9b/21566.jpg)"}')
+            .product--article Артикул: 23374
+            .product--name Серебряная подвеска-шарм с эмалью
+          .col-lg-5.col-md-5.col-sm-5.col-xs-5
+            .product--oldprice 1 490 р.
+            .product--price 990 р.
+          .col-lg-7.col-md-7.col-sm-7.col-xs-7
+            .product--buy-button Где купить
+        .product.col-lg-3.col-md-4.col-sm-6.col-xs-6
+          .col-lg-12.col-md-12.col-sm-12
+            .product--image(ng-style='{backgroundImage: "url(http://l1.sl-love.ru/upload/iblock/a9b/21566.jpg)"}')
+            .product--article Артикул: 23374
+            .product--name Серебряная подвеска-шарм с эмалью
+          .col-lg-5.col-md-5.col-sm-5.col-xs-5
+            .product--oldprice 1 490 р.
+            .product--price 990 р.
+          .col-lg-7.col-md-7.col-sm-7.col-xs-7
+            .product--buy-button Где купить
+        .product.col-lg-3.col-md-4.col-sm-6.col-xs-6
+          .col-lg-12.col-md-12.col-sm-12
+            .product--image(ng-style='{backgroundImage: "url(http://l1.sl-love.ru/upload/iblock/a9b/21566.jpg)"}')
+            .product--article Артикул: 23374
+            .product--name Серебряная подвеска-шарм с эмалью
+          .col-lg-5.col-md-5.col-sm-5.col-xs-5
+            .product--oldprice 1 490 р.
+            .product--price 990 р.
+          .col-lg-7.col-md-7.col-sm-7.col-xs-7
+            .product--buy-button Где купить
+        .product.col-lg-3.col-md-4.col-sm-6.col-xs-6
+          .col-lg-12.col-md-12.col-sm-12
+            .product--image(ng-style='{backgroundImage: "url(http://l1.sl-love.ru/upload/iblock/a9b/21566.jpg)"}')
+            .product--article Артикул: 23374
+            .product--name Серебряная подвеска-шарм с эмалью
+          .col-lg-5.col-md-5.col-sm-5.col-xs-5
+            .product--oldprice 1 490 р.
+            .product--price 990 р.
+          .col-lg-7.col-md-7.col-sm-7.col-xs-7
+            .product--buy-button Где купить
+
+    //-.row
+      .sl-banners
+        .col-lg-6.col-md-6.col-sm-6.col-xs-12
+          a.banner(ng-style='{backgroundImage: "url(/assets/banner-ultra-silver.jpg)"}')
+        .col-lg-6.col-md-6.col-sm-6.col-xs-12
+          a.banner(ng-style='{backgroundImage: "url(/assets/banner-autumn-sharm.jpg)"}')
+    .row
+      a(name='map')
+      map.sl-map(center="0,0",
+        height="400"
+        zoom="8",
+        pan-control="true",
+        pan-control-options="{position:'TOP_RIGHT'}",
+        map-type-control="false"
+        zoom-control="true",
+        zoom-control-options="{style:'LARGE', position:'LEFT_CENTER'}",
+        scale-control="true",
+        street-view-control="true",
+        street-view-control-options="{position:'LEFT_TOP'}")
+
+    .row.col-xs-10.col-xs-offset-1.col-lg-10.col-lg-offset-1
+        p.underterms
+          p * В акции участвует 3 вида шарма из алпанита: голубой гладкий, зеленый с цветком и синий резной. Количество подарков ограничено.В случае, если подарок закончится до завершения акции, консультант вправе заменить подарок, предложив альтернативный, или назвать адрес магазина SUNLIGHT, где подарок есть в наличии. Браслет в акции не участвует.
+          p Обязательным условием участия в Акциях Программы «Клуб SUNLIGHT» является подтверждение номера телефона при регистрации в Акции (посредством получения кода на телефонный номер, указанный Участником Программы «Клуб SUNLIGHT»).
+          p Участник Программы «Клуб SUNLIGHT» может принять участие в каждой Акции, только один раз в период проведения Акции. В течение одного календарного дня Участник Программы «Клуб SUNLIGHT» имеет право получить подарок только по одной Акции, проводимой Организатором, независимо от количества предъявленных сообщений и купонов, предоставляющих право на получение подарков. Выдача нескольких подарков по различным Акциям в течение календарного дня одному и тому же участнику акции не производится.
+
+include ../components/footer/footer

@@ -1,0 +1,370 @@
+.sl-wrapper {
+  overflow: hidden;
+}
+
+.sl-content {
+  font-family: 'futurabook', "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+  font-size: 1.2em;
+  h1, h2, h3, h4 {
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .row {
+    margin-bottom: 1em;
+  }
+}
+
+.sl-action {
+  max-height: 90vh;
+  margin: 0 0 4em;
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 2.15rem;
+    font-weight: 900;
+    text-align: left;
+  }
+
+  .action-height {
+    height: 237px;
+    max-height: 57vw;
+    @media (min-width: @screen-sm-min) {
+      height: 415px;
+    }
+    @media (min-width: @screen-sm-min) {
+      height: 406px;
+    }
+    @media (min-width: @screen-lg-min) {
+      height: 415px;
+    }
+  }
+
+  .preview {
+    .action-height;
+    background: #f9f9f9 url('/assets/present-bracelet.jpg') 50% 0 no-repeat;
+    background-size: contain;
+    text-align: center;
+  }
+
+  .action-terms {
+    padding: 0;
+    margin-left: 15px;
+
+    @media (min-width: @screen-md-min) {
+      .action-height;
+      margin: 0;
+    }
+  }
+
+  .terms {
+    width: 100%;
+    height: 100%;
+    background: #e1e1e1;
+    padding: 1em;
+    margin: 0 -15px;
+
+    @media (min-width: @screen-md-min) {
+      .action-height;
+    }
+
+    @media (min-width: @screen-lg-min) {
+      padding: 1em 2.5em;
+      margin-left: .25em;
+    }
+
+    h4 {
+      margin: 0;
+    }
+
+    ol {
+      margin-top: .5em;
+      padding-left: 1.5em;
+    }
+  }
+
+  .action--form {
+    display: block;
+    padding: 0;
+    margin-bottom: 0;
+
+    .action--message-activated {
+      padding: 1em;
+      display: none;
+      font-weight: 900;
+    }
+
+    .action--message-invalid {
+      color: red;
+      font-size: .8em;
+      display: none;
+      text-align: center;
+    }
+
+    .action--input-prefix {
+      text-align: center;
+      display: inline-block;
+      line-height: 3em;
+      height: 3em;
+      background: #efefef;
+      border: 1px solid #ccc;
+      border-right: none;
+    }
+
+    input[type="text"], input[type="number"] {
+      display: inline-block;
+      line-height: 2em;
+      height: 3em;
+      padding: 0 1em;
+      margin-bottom: .25em;
+      border: 1px solid #ccc;
+    }
+
+    label {
+      display: block;
+      padding-left: 1em;
+      font-weight: 100;
+      font-size: .8em;
+      vertical-align: middle;
+    }
+
+    button {
+      position: relative;
+      vertical-align: top;
+      width: 100%;
+      height: 2em;
+      margin-top: .25em;
+      padding: 0;
+      font-size: 1.5em;
+      color: #FFF;
+      text-align: center;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      background: rgba(232, 1, 0, 0.81) none repeat scroll 0 0;
+      border: none;
+      border-bottom: 2px solid rgba(232, 1, 0, 0.81);
+      -moz-border-top-colors: none;
+      -moz-border-right-colors: none;
+      -moz-border-bottom-colors: none;
+      -moz-border-left-colors: none;
+      border-image: none;
+      cursor: pointer;
+      box-shadow: 0px -2px rgba(232, 1, 0, 0.81) inset;
+
+      &:disabled {
+        background: rgba(200, 200, 200, 0.81) none repeat scroll 0 0;
+        border-color: rgba(200, 200, 200, 0.9);
+        box-shadow: 0px -2px rgba(200, 200, 200, 0.81) inset;
+      }
+
+      @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+        margin: 0;
+      }
+    }
+
+    &.action--form-activated {
+      & > div {
+        display: none;
+      }
+
+      .action--message-activated {
+        display: block;
+      }
+    }
+
+    &.action--form-invalid {
+      .action--message-invalid {
+        display: block;
+      }
+    }
+  }
+}
+
+.sl-region {
+  text-align: center;
+  margin-top: -.75em;
+  margin-bottom: 1em;
+
+  .region--now {
+    display: inline-block;
+  }
+  .region--form {
+    display: inline-block;
+    border: 1px solid #eee;
+    background: #fcfcfc;
+  }
+}
+
+.sl-outlets {
+  position: relative;
+  margin: -5px;
+  -webkit-transition: all 300ms;
+  -moz-transition: all 300ms;
+  -ms-transition: all 300ms;
+  -o-transition: all 300ms;
+  transition: all 300ms;
+
+  a {
+    text-decoration: none;
+    color: #444;
+  }
+
+  .outlet {
+    padding: 20px 15px 0;
+    margin: 5px -10px;
+    background: #eee;
+
+    & > div {
+      height: 100%;
+    }
+
+    &--metro {
+      margin-left: 1.5em;
+      margin-bottom: .75em;
+      min-height: 1em;
+    }
+
+    &--metro-line {
+      position: absolute;
+      font-size: .6em;
+      top: 1.2em;
+      left: 1em;
+      width: 2em;
+      height: 2em;
+      line-height: 2em;
+      text-align: center;
+      margin-left: -.1em;
+      display: inline-block;
+      border-radius: 50%;
+      background: #ccc no-repeat;
+
+      @media (min-width: @screen-sm-min) {
+        top: .20em;
+      }
+    }
+
+    &--map-wrapper {
+      display: inline-block;
+      vertical-align: middle;
+      height: 100%;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -0.25em;
+      }
+    }
+
+    &--name {
+      font-weight: 900;
+      width: 100%;
+      display: block;
+
+      @media (min-width: @screen-sm-min) {
+        position: absolute;
+        display: inline-block;
+      }
+    }
+
+    &--open-hours {
+      font-size: .8em;
+    }
+
+    &--map {
+      background: url('/assets/map.png') no-repeat 50% 0;
+      padding-top: 25px;
+      font-size: .8em;
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: underline;
+      display: inline-block;
+    }
+  }
+
+  .map-stripe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 5px 50% 5px 5px;
+    right: 0;
+    top: 0;
+    background: #000;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  &.mapped {
+    transform: translate3d(-50%, 0, 0);
+
+    .map-stripe {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+
+}
+
+.sl-products {
+  .product {
+    text-transform: uppercase;
+
+    &--image {
+      background: no-repeat 50% 0;
+      background-size: contain;
+    }
+
+    &--article {
+      font-size: .75em;
+      text-transform: none;
+    }
+
+    &--price, &--oldprice {
+      text-transform: none;
+    }
+
+    &--oldprice {
+      font-size: .85em;
+      text-decoration: line-through;
+    }
+
+    &--price {
+      font-weight: 900;
+    }
+
+    &--buy-button {
+      font-size: .7em;
+      border: 1px solid;
+      padding: 5px 10px;
+      text-align: center;
+      margin-top: 5px;
+    }
+  }
+}
+
+.sl-banners {
+  & > div {
+    height: 265px;
+    @media (min-width: @screen-sm-min) {
+      height: 192px;
+    }
+    @media (min-width: @screen-md-min) {
+      height: 309px;
+    }
+  }
+  a {
+    display: block;
+    height: 100%;
+    max-height: 55vw;
+    background: transparent no-repeat 50% 0;
+    background-size: contain;
+  }
+}
+
+.sl-map{
+  max-height: 99vh;
+}

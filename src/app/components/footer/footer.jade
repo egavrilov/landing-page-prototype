@@ -1,0 +1,52 @@
+mixin listLink(text)
+  li
+    if block
+      block
+    a&attributes(attributes)= text
+
+footer.sl-footer
+  .container
+    .row
+      ul.footer--logo.col-lg-3.col-md-2.col-sm-12.col-xs-12
+        li.footer--logo__row
+          .footer--logo__wrapper
+        li.footer--logo__row Ювелирный гипермаркет
+        li.footer--logo__row © love.sl 2008-2015
+      .list-group.col-lg-9.col-md-10.col-sm-12.col-xs-12
+        #list-second.list.col-lg-3.col-md-3.col-sm-3.col-xs-6
+          ul
+            +listLink('КЛУБ SUNLIGHT')(href='http://club.love.sl/#/rules')
+            +listLink('АКЦИИ')(href='http://love-sl.ru/actions/')
+            +listLink('ПОДАРОЧНАЯ КАРТА')(href='http://love-sl.ru/certificate/')
+            +listLink('ВИДЕО')(href='http://love-sl.ru/video/', rel='nofollow')
+        #list-third.list.col-lg-3.col-md-3.col-sm-3.col-xs-6
+          ul
+            +listLink('ВАКАНСИИ')(href='http://love-sl.ru/jobs/')
+            +listLink('ПАРТНЕРАМ')(href='http://love-sl.ru/partner/')
+            +listLink('СЕРТИФИКАЦИЯ')(href='http://love-sl.ru/company/quality/')
+            +listLink('КАРТА САЙТА')(href='http://love-sl.ru/sitemap.php')
+        #list-fourth.list.col-lg-3.col-md-3.col-sm-3.col-xs-6
+          ul
+            +listLink('О SUNLIGHT')(href='http://love-sl.ru/company/')
+            +listLink('КЛИЕНТСКАЯ СЛУЖБА')(href='http://love-sl.ru/callcenter/')
+            +listLink('СЕРВИС-ЦЕНТР')(href='http://love-sl.ru/shops/service/')
+            +listLink('ОТЗЫВЫ О SUNLIGHT')(href='http://love-sl.ru/ask/')
+            +listLink('СОВЕТЫ')(href='http://love-sl.ru/faq/')
+        #list-fifth.list.col-lg-3.col-md-3.col-sm-3.col-xs-6
+          ul
+            +listLink('LIVEJOURNAL')(href='http://brilliant-life.livejournal.com/', rel='nofollow', target='_blank')
+              span.pic.lj
+            +listLink('ВКОНТАКТЕ')(href='http://vk.com/club32124003', rel='nofollow', target='_blank')
+              span.pic.vk
+            +listLink('FACEBOOK')(href='http://www.facebook.com/SUNLIGHT.Brilliant', rel='nofollow', target='_blank')
+              span.pic.fb
+            +listLink('YOUTUBE')(href='http://www.youtube.com/user/sunlightBrilliant', rel='nofollow', target='_blank')
+              span.pic.yt
+            +listLink('ОДНОКЛАССНИКИ')(href='http://www.odnoklassniki.ru/sunlightbrilliant', rel='nofollow', target='_blank')
+              span.pic.ok
+            +listLink('INSTAGRAM')(href='http://instagram.com/sunlightbrilliant', rel='nofollow', target='_blank')
+              span.pic.ig
+            +listLink('TWITTER')(href='http://twitter.com/sunlightbrillia', rel='nofollow', target='_blank')
+              span.pic.tw
+            +listLink('GOOGLE+')(href='https://plus.google.com/109818786101582835959', rel='nofollow', target='_blank')
+              span.pic.gg

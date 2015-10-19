@@ -1,0 +1,96 @@
+.sl-footer {
+  margin: 0 auto;
+
+  .footer--nav {
+    display: none;
+    vertical-align: middle;
+    right: 0;
+
+    & > li {
+      display: inline-block;
+      list-style: none;
+      margin: 10px;
+    }
+  }
+
+  .footer--logo__wrapper {
+    background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') 0 -41px no-repeat;
+    width: 132px;
+    height: 15px;
+    margin: 0 0 11px;
+
+
+    @media (max-width: @screen-xs-max) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .footer--logo__row {
+    color: dimgrey;
+    display: block;
+    list-style: none;
+    line-height: 1.2em;
+
+    @media (max-width: @screen-xs-max) {
+      text-align: center;
+    }
+  }
+
+  .list-group {
+    vertical-align: top;
+
+    .list {
+      vertical-align: top;
+      font-size: 0.8em;
+      line-height: 1.5em;
+
+      ul{
+        padding-left: 0;
+      }
+    }
+
+    li {
+      list-style: none;
+      padding-bottom: 3px;
+    }
+    a {
+      text-decoration: none;
+      color: rgba(105, 105, 105, 0.75);
+      &:hover {
+        color: rgb(105, 105, 105);
+      }
+    }
+    .pic {
+      display: inline-block;
+      position: relative;
+      top: 7px;
+      width: 25px;
+      height: 22px;
+      margin-top: -7px;
+    }
+    .lj {
+      background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') -169px -106px no-repeat;
+    }
+    .vk {
+      background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') -166px -132px no-repeat;
+    }
+    .fb {
+      background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') -166px -159px no-repeat;
+    }
+    .yt {
+      background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') -169px -189px no-repeat;
+    }
+    .ok {
+      background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') -168px -215px no-repeat;
+    }
+    .ig {
+      background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') -168px -270px no-repeat;
+    }
+    .tw {
+      background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') -168px -243px no-repeat;
+    }
+    .gg {
+      background: url('http://cdn1.love.sl/love.sl/lookbook/images/sprite.png?20150416') -168px -296px no-repeat;
+    }
+  }
+}
