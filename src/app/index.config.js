@@ -1,6 +1,5 @@
-function config ($logProvider) {
-  // Enable log
-  $logProvider.debugEnabled(true);
+function config ($httpProvider) {
+  $httpProvider.defaults.timeout = 1000;
 }
 
 export default /*@ngInject*/ config;

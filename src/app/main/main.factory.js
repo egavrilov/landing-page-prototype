@@ -16,7 +16,7 @@ function MainFactory($log, $http, $q) {
       outlets: getOutlets()
     }).then((response) => {
       factory.region = response.location.data && response.location.data.region_id || defaultRegion;
-      outlets = response.outlets.data.filter((outlet) => !outlet.is_franchise && !outlet.pawnshop);
+      outlets = response.outlets.data.filter((outlet) => !outlet.is_franchise);
       regions = outlets
         .reduce((outletsObject, outlet) => {
           if (outlet.region_id && outlet.region_id[0]) {
@@ -47,6 +47,10 @@ function MainFactory($log, $http, $q) {
   }
 
   function error(response) {
+    if (response.status === -1) {
+      $log.info('Request timeout, trying again');
+      return factory.init();
+    }
     if (response.data && response.data.error) {
       $log.warn(response.data.error);
     }
