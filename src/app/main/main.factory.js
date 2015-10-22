@@ -38,7 +38,7 @@ function MainFactory($log, $http, $timeout, $q) {
   }
 
   function getOutlets() {
-    return $http.get(factory.base + 'outlets/');
+    return $http.get(factory.modern + 'outlets/');
   }
 
   function filterOutlets(){
@@ -50,17 +50,20 @@ function MainFactory($log, $http, $timeout, $q) {
   function error(response) {
     if (response.status === -1) {
       $log.warn('Request timeout, try again');
-      return debouncedInit();
+      debouncedInit();
     }
 
     if (response.data && response.data.error) {
       $log.warn(response.data.error);
-      return;
     }
 
-    $log.warn('Server error ' + response.status);
-    $log.warn(response.data);
-    $timeout(debouncedInit, 5000);
+    if (!angular.isString(response.data)) {
+      $log.warn('Server error ' + response.status);
+      $log.warn(response.data);
+      $timeout(debouncedInit, 5000);
+    }
+
+    return $q.reject();
   }
 
   // Returns a function, that, as long as it continues to be invoked, will not
