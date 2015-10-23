@@ -24,7 +24,7 @@ include ../components/header/header
                 input(type='checkbox', ng-model='main.subscribe', id='subscribe')
                 span &nbsp;Подписаться на новостную рассылку
             .action--submit.col-lg-12.col-md-12.col-sm-6.col-xs-12
-              button(type='submit', ng-disabled='!main.agree || main.isLocked') Получить подарок
+              button(type='submit', ng-disabled='!main.agree || main.isLocked', id='getPromoCode') Получить подарок
             .action--message-activated
               p Спасибо!
               p На ваш номер телефона выслан промокод участника акции.
