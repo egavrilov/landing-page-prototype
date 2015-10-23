@@ -94,19 +94,6 @@
     padding: 0;
     margin-bottom: 0;
 
-    .action--message-activated {
-      padding: 1em;
-      display: none;
-      font-weight: 900;
-    }
-
-    .action--message-invalid {
-      color: red;
-      font-size: .8em;
-      display: none;
-      text-align: center;
-    }
-
     .action--input-prefix {
       text-align: center;
       display: inline-block;
@@ -167,21 +154,100 @@
         margin: 0;
       }
     }
+  }
 
-    &.action--form-activated {
-      & > div {
-        display: none;
+  .action--message-activated {
+    .terms;
+    padding: 1em;
+    display: none;
+    font-weight: 100;
+    text-transform: uppercase;
+
+    h5, h6 {
+      text-align: center;
+      font-size: 1.5em;
+      margin: 0;
+      color: #333;
+      font-weight: 400;
+
+      &.buttons{
+        margin-bottom: .5em;
+      }
+      &.social{
+        margin-top: 1em;
+      }
+    }
+    p {
+      color: #666;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .activated--share-buttons {
+      margin: 0 -1.75em;
+      .button {
+        display: inline-block;
+        height:24px;
+        background: transparent no-repeat 50% 50%;
+        background-size:contain;
       }
 
-      .action--message-activated {
-        display: block;
+      .vkButton{
+        .button;
+        background-image: url(http://l1.sl-love.ru/img/personal/auth/vk.png);
+      }
+      .fbButton{
+        .button;
+        background-image: url(http://l1.sl-love.ru/img/personal/auth/facebook.png);
+      }
+      .okButton{
+        .button;
+        background-image: url(http://l1.sl-love.ru/img/actions/gift/ok.png);
       }
     }
 
-    &.action--form-invalid {
-      .action--message-invalid {
-        display: block;
+    .activated--social{
+      margin: 0 10%;
+      a{
+        width: 40%;
+        display: inline-block;
+        text-align: center;
       }
+      .vkButton{
+        background: transparent url(http://l1.sl-love.ru/img/actions/gift/vk.png) no-repeat 50% 50%;
+        display: inline-block;
+        width: 89px;
+        height: 89px;
+        margin: 15px;
+        border-radius: 50%;
+      }
+      .instaButton{
+        .vkButton;
+        background-image: url(http://l1.sl-love.ru/img/actions/gift/insta.jpg);
+      }
+    }
+  }
+
+  .action--message-invalid {
+    color: red;
+    font-size: .8em;
+    display: none;
+    text-align: center;
+  }
+
+  .action--form-activated {
+    & > div {
+      display: none;
+    }
+
+    .action--message-activated {
+      display: block;
+    }
+  }
+
+  .action--form-invalid {
+    .action--message-invalid {
+      display: block;
     }
   }
 }
