@@ -51,7 +51,7 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe($.sourcemaps.init())
     .pipe($.cdnizer({
       defaultCDNBase: conf.cdnPrefix,
-      files: ['**/*.{gif,png,jpg,jpeg}']
+      files: ['/assets/**/*.{gif,png,jpg,jpeg}']
     }))
     .pipe($.minifyCss({ processImport: false }))
     .pipe($.sourcemaps.write('maps'))
