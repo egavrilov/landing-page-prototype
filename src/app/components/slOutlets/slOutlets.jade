@@ -1,0 +1,78 @@
+.sl-outlets.row
+  .col-xs-12.col-sm-4.col-md-4.region--wrapper
+    .region
+      .region--current
+        span Ваш город:&nbsp;
+        span.region--current-value(ng-bind='main.model.region.name')
+      select.region--form(ng-options='region as region.name for region in main.model.regions track by region.id',
+        ng-model='main.model.region', ng-change='outlets.trackRegion()')
+    .outlets--search
+      input(type='text', ng-model='outlets.outletsFilter', ng-change='outlets.bound()')
+      .outlets--search-icon
+    .outlets--wrapper
+      .outlet(ng-repeat='outlet in main.model.outlets | filter:outlets.outletsFilter',
+        ng-class='{"outlet-selected": outlet.selected}',
+        ng-click='outlets.select(outlet)')
+        .outlet-title(ng-bind='::outlet.mall')
+        .outlet-info(ng-bind='::outlet.address')
+
+  .col-xs-12.col-sm-8.col-md-8
+    a(name='map')
+    map.sl-map(
+      height="600",
+      pan-control="true",
+      pan-control-options="{position:'TOP_RIGHT'}",
+      map-type-control="false",
+      zoom-control="true",
+      zoom-control-options="{style:'LARGE', position:'LEFT_TOP'}",
+      scale-control="true",
+      single-info-window='true',
+      street-view-control="false")
+
+      marker(ng-repeat='outlet in main.model.outlets| filter:outlets.outletsFilter',
+        id='outlet_{{::outlet.id}}',
+        position='{{::outlet.geo.join()}}',
+        on-click='outlets.openInfo(outlet, outlets)',
+        icon='{{outlet.icon || "/assets/marker.png"}}')
+        info-window(id='info_{{::outlet.id}}',
+          visible-on-marker='outlet_{{::outlet.id}}',
+          closeclick='outlets.back()')
+          .outlet--marker-info
+            h4(ng-bind='current.mall')
+            .address {{::current.address}}
+            .metros
+              span.metro(ng-show='current.metros[0]', ng-style='{color: "#"+ current.metros[0].color}')
+                span.icon(ng-style='{backgroundColor: "#"+ current.metros[0].color}')
+                | {{::current.metros[0].name}}
+              span.metro(ng-show='current.metros[1]', ng-style='{color: "#"+ current.metros[0].color}')
+                span.icon(ng-style='{backgroundColor: "#"+ current.metros[1].color}')
+                | {{::current.metros[1].name}}
+              span.metro(ng-show='current.metros[2]', ng-style='{color: "#"+ current.metros[0].color}')
+                span.icon(ng-style='{backgroundColor: "#"+ current.metros[2].color}')
+                | {{::current.metros[2].name}}
+
+
+            .hours
+              span(ng-bind='::current.opening_hours')
+      //custom-marker(id="outletCard", position='Russia, Moscow', visible='false')
+      //  .outletCard
+      //    p some some some
+    //.sl-region
+    //  .region--now Вы находитесь в регионе
+    //  select.region--form(ng-options='region.id as region.name for region in main.model.regions',
+    //  ng-model='main.model.region', ng-change='main.trackRegion()')
+    //.sl-outlets.row(vertilize-container)
+    //  .col-lg-4.col-md-4.col-sm-6.col-xs-12(ng-repeat='outlet in main.model.outlets')
+    //    .outlet(vertilize)
+    //      .col-lg-9.col-md-9.col-sm-9.col-xs-9
+    //        .outlet--metro-line(ng-if='outlet.metros.length', ng-style='{ backgroundColor: "#"+outlet.metros[0].color }') М
+    //        .outlet--metro
+    //          span(ng-bind='::outlet.metros[0].name', ng-if='outlet.metros.length')
+    //          span(ng-if='outlet.metros.length') &nbsp;
+    //          span.outlet--name(ng-bind='::outlet.mall')
+    //        .outlet--address(ng-bind='::outlet.address')
+    //        .outlet--open-hours(ng-bind='::outlet.opening_hours')
+    //      .col-lg-3.col-md-3.col-sm-3.col-xs-3
+    //        a.outlet--map-wrapper(ng-click='main.renderMarker(outlet.geo)', ng-if='outlet.geo.length')
+    //          .outlet--map Маршрут
+    //

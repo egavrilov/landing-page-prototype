@@ -170,10 +170,10 @@
       color: #333;
       font-weight: 400;
 
-      &.buttons{
+      &.buttons {
         margin-bottom: .5em;
       }
-      &.social{
+      &.social {
         margin-top: 1em;
       }
     }
@@ -187,33 +187,33 @@
       margin: 0 -1.75em;
       .button {
         display: inline-block;
-        height:24px;
+        height: 24px;
         background: transparent no-repeat 50% 50%;
-        background-size:contain;
+        background-size: contain;
       }
 
-      .vkButton{
+      .vkButton {
         .button;
         background-image: url('http://l1.sl-love.ru/img/personal/auth/vk.png');
       }
-      .fbButton{
+      .fbButton {
         .button;
         background-image: url('http://l1.sl-love.ru/img/personal/auth/facebook.png');
       }
-      .okButton{
+      .okButton {
         .button;
         background-image: url('http://l1.sl-love.ru/img/actions/gift/ok.png');
       }
     }
 
-    .activated--social{
+    .activated--social {
       margin: 0 10%;
-      a{
+      a {
         width: 40%;
         display: inline-block;
         text-align: center;
       }
-      .vkButton{
+      .vkButton {
         background: transparent url('http://l1.sl-love.ru/img/actions/gift/vk.png') no-repeat 50% 50%;
         display: inline-block;
         width: 89px;
@@ -221,7 +221,7 @@
         margin: 15px;
         border-radius: 50%;
       }
-      .instaButton{
+      .instaButton {
         .vkButton;
         background-image: url('http://l1.sl-love.ru/img/actions/gift/insta.jpg');
       }
@@ -252,123 +252,8 @@
   }
 }
 
-.sl-region {
-  text-align: center;
-  margin-top: -.75em;
-  margin-bottom: 1em;
-
-  .region--now {
-    display: inline-block;
-  }
-  .region--form {
-    display: inline-block;
-    border: 1px solid #eee;
-    background: #fcfcfc;
-  }
-}
-
-.sl-outlets {
-  position: relative;
-  margin: -5px;
-  -webkit-transition: all 300ms;
-  -moz-transition: all 300ms;
-  -ms-transition: all 300ms;
-  -o-transition: all 300ms;
-  transition: all 300ms;
-
-  a {
-    text-decoration: none;
-    color: #444;
-  }
-
-  .outlet {
-    padding: 20px 15px 0;
-    margin: 5px -10px;
-    background: #eee;
-
-    & > div {
-      height: 100%;
-    }
-
-    &--metro {
-      display: inline-block;
-      margin-bottom: .75em;
-      min-height: 1em;
-    }
-
-    &--metro-line {
-      position: relative;
-      font-size: .6em;
-      top: -.2em;
-      width: 2em;
-      height: 2em;
-      line-height: 2em;
-      text-align: center;
-      margin: 0 .25em 0 0;
-      display: inline-block;
-      border-radius: 50%;
-      background: no-repeat #ccc;
-    }
-
-    &--map-wrapper {
-      display: inline-block;
-      vertical-align: middle;
-      height: 100%;
-
-      &:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-        margin-right: -0.25em;
-      }
-    }
-
-    &--name {
-      font-weight: 900;
-      width: 100%;
-      display: block;
-
-      @media (min-width: @screen-sm-min) {
-        position: absolute;
-        display: inline-block;
-      }
-    }
-
-    &--open-hours {
-      font-size: .8em;
-    }
-
-    &--map {
-      background: url('/assets/map.png') no-repeat 50% 0;
-      padding-top: 25px;
-      font-size: .8em;
-      text-align: center;
-      text-transform: uppercase;
-      text-decoration: underline;
-      display: inline-block;
-    }
-  }
-
-  .map-stripe {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    padding: 5px 50% 5px 5px;
-    right: 0;
-    top: 0;
-    background: #000;
-    transform: translate3d(100%, 0, 0);
-  }
-
-  &.mapped {
-    transform: translate3d(-50%, 0, 0);
-
-    .map-stripe {
-      transform: translate3d(100%, 0, 0);
-    }
-  }
-
+.region--wrapper{
+  overflow: hidden;
 }
 
 .sl-products {
@@ -427,6 +312,7 @@
   }
 }
 
-.sl-map{
+.sl-map {
+  height: 100vw;
   max-height: 99vh;
 }

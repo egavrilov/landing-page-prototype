@@ -8,6 +8,7 @@ function MainFactory($log, $http, $timeout, $q) {
     outlets: [],
     filterOutlets: filterOutlets
   };
+  let outletsById;
 
   factory.init = () => {
     return $q.all({
@@ -15,7 +16,9 @@ function MainFactory($log, $http, $timeout, $q) {
       regions: getRegions(),
       outlets: getOutlets()
     }).then((response) => {
-      factory.region = response.location.data && response.location.data.region_id || defaultRegion;
+      let regionId = response.location.data && response.location.data.region_id || defaultRegion;
+      factory.regions = response.regions.data.filter((region) => regions[region.id] = region);
+      factory.region = { id: regionId, name: regions[regionId].name };
       outlets = response.outlets.data.filter((outlet) => !outlet.is_franchise);
       regions = outlets
         .reduce((outletsObject, outlet) => {
@@ -25,8 +28,16 @@ function MainFactory($log, $http, $timeout, $q) {
 
           return outletsObject;
         }, {});
-      factory.regions = response.regions.data.filter((region) => regions[region.id]);
     }, error).then(filterOutlets);
+  };
+
+  factory.getById = function (id) {
+    outletsById = outletsById || outlets.reduce((outletsById, outlet) => {
+        outletsById[outlet.id] = outlet;
+        return outletsById;
+      }, {});
+
+    return outletsById[id] || null;
   };
 
   function getLocation() {
@@ -43,7 +54,7 @@ function MainFactory($log, $http, $timeout, $q) {
 
   function filterOutlets(){
     factory.outlets = outlets.filter((outlet) =>
-      outlet.region_id && outlet.region_id.indexOf(factory.region) !== -1);
+      outlet.region_id && outlet.region_id.indexOf(factory.region.id) !== -1);
   }
 
   let debouncedInit = debounce(factory.init, 2000);
