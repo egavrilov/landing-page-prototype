@@ -3,10 +3,6 @@ class MainCtrl{
    *@ngInject
    */
   constructor($anchorScroll, $http, $scope, $window, Main){
-    this.gm = function (googleMapsMethod) {
-      let args = [null].concat(Array.prototype.slice.call(arguments, 1));
-      return new (Function.prototype.bind.apply($window.google.maps[googleMapsMethod], args));
-    };
     this.$anchorScroll = $anchorScroll;
     this.$http = $http;
     this.$window = $window;
@@ -17,15 +13,15 @@ class MainCtrl{
     this.agree = true;
     this.subscribe = true;
     this.isMobile = /android|ip(ad|hone|od)/i.test($window.navigator.userAgent);
-
-    $scope.$on('mapInitialized', () => {
-      this.isMapReady = true;
-      this.renderMap();
-    });
-    this.model.init().then(() => {
-      this.isDataReady = true;
-      this.renderMap();
-    });
+    //
+    //$scope.$on('mapInitialized', () => {
+    //  this.isMapReady = true;
+    //  this.renderMap();
+    //});
+    //this.model.init().then(() => {
+    //  this.isDataReady = true;
+    //  this.renderMap();
+    //});
   }
 
   renderMap(){
@@ -38,6 +34,7 @@ class MainCtrl{
       }
     });
     this.$scope.map.fitBounds(this.bounds);
+    this.$scope.map.panToBounds(this.bounds);
   }
 
   renderMarker(geo){
@@ -46,22 +43,10 @@ class MainCtrl{
     this.$anchorScroll('map');
   }
 
-  addMarker(lat, lng){
-    if (!this.$scope.map) return;
-    return this.gm('Marker', {
-      position: this.gm('LatLng', lat, lng),
-      map: this.$scope.map
-    });
-  }
-
   openMap(){
     if (!this.$scope.map) return;
   }
 
-  trackRegion(){
-    this.model.filterOutlets();
-    this.renderMap();
-  }
 
   toggleLimit(){
     this.limit = this.limit ? 4 : null;
