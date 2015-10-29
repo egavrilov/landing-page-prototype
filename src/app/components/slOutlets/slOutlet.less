@@ -57,7 +57,6 @@
     }
     .metro{
       line-height: 1em;
-      padding-left: 2.25em;
     }
     .hours{
       font-size: 1.1em;
@@ -65,9 +64,8 @@
     }
 
     .metro--icon {
-      #metro--icon(1.5em, 1em);
-      top: 0;
-      width: 1.51em;
+      #metro--icon();
+      background-image: url('/assets/station_mask_grey.png');
     }
   }
 
@@ -172,18 +170,13 @@
       }
     }
   }
-
   .metro{
     font-size: 1.25em;
     line-height: 3rem;
     position: relative;
-    padding-left: 3.5rem;
     top: .25rem;
-
-    .metro--icon {
-      #metro--icon();
-    }
   }
+
 }
 
 .outlet--marker-info{
@@ -207,6 +200,9 @@
 
   .hours{
     margin-top: .5rem;
+  }
+  .metro .metro--icon {
+    #metro--icon();
   }
 }
 
@@ -232,15 +228,15 @@
   }
 }
 
-#metro--icon(@width: 3rem, @height: 2rem) {
-  content: '';
-  position: absolute;
+#metro--icon(@width: 2.7rem, @height: 2rem) {
+  position: relative;
+  display: inline-block;
   left: 0;
-  top: -.25rem;
+  top: .25em;
+  margin-right: .25em;
   width: @width;
   height: @height;
-  -webkit-mask-image: url('/assets/station.svg'), url('/assets/station.png');
-  mask-image: url('/assets/station.svg'), url('/assets/station.png');
-  -webkit-mask-size: @width @height;
-  mask-size: @width @height;
+  background: url('/assets/station_mask_white.png') no-repeat 50% 50%;
+  background-size: contain;
+
 }
