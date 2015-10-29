@@ -32,7 +32,6 @@ class OutletsController {
   }
 
   render() {
-    console.log(this);
     this.bounds = this.gm('LatLngBounds');
     this.model.outlets.forEach((outlet) => {
       if (outlet.geo && outlet.geo.length) {
@@ -40,8 +39,22 @@ class OutletsController {
         this.bounds.extend(marker);
       }
     });
+    console.log(this.$scope.map);
+    this.$scope.google.maps.event.trigger(this.$scope.map, 'resize');
     this.$scope.map.fitBounds(this.bounds);
     this.$scope.map.panToBounds(this.bounds);
+  }
+
+  showcase(refresh){
+    if (refresh) {
+      console.log(this.$scope);
+      this._showcase = refresh;
+      this.$timeout(() => {
+        this.render();
+      });
+    }
+
+    return this._showcase || 'list';
   }
 
   trackRegion() {
@@ -112,7 +125,7 @@ class OutletsController {
     }
 
     if (this.outletsFilter)
-      matchPattern = JSON.stringify(outlet).toLowerCase().indexOf(this.outletsFilter) !== 1;
+      matchPattern = angular.toJson(outlet).toLowerCase().indexOf(this.outletsFilter) !== 1;
 
     return belongsToMap && matchPattern;
   }

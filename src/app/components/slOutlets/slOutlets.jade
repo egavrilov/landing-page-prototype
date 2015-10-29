@@ -6,17 +6,27 @@
         span.region--current-value(ng-bind='main.model.region.name')
       select.region--form(ng-options='region as region.name for region in main.model.regions track by region.id',
         ng-model='main.model.region', ng-change='outlets.trackRegion()')
+    .outlets--view(ng-if='main.isMobile')
+      button(ng-click='outlets.showcase("list")', ng-class='{"outlets--view-active": outlets.showcase() === "list"}') Список
+      button(ng-click='outlets.showcase("map")', ng-class='{"outlets--view-active": outlets.showcase() === "map"}') Карта
     .outlets--search
-      input(type='text', ng-model='outlets.outletsFilter', ng-change='outlets.bound()')
+      input(type='text', ng-model='outlets.outletsFilter', ng-change='outlets.bound()'
+        ng-class='{"outlets--search-filter": main.isMobile}')
       .outlets--search-icon
-    .outlets--wrapper
+    .outlets--wrapper(ng-hide='main.isMobile && outlets.showcase() !== "list"')
       .outlet(ng-repeat='outlet in main.model.outlets | filter:outlets.outletsFilter',
         ng-class='{"outlet-selected": outlet.selected}',
         ng-click='outlets.select(outlet)')
         .outlet-title(ng-bind='::outlet.mall')
-        .outlet-info(ng-bind='::outlet.address')
+        .outlet-info
+          .address(ng-bind='::outlet.address')
+          span.metro(ng-show='main.isMobile && outlet.selected && outlet.metros[0]')
+            span.metro--icon(ng-style='{backgroundColor: "#"+ outlet.metros[0].color}')
+            | {{::outlet.metros[0].name}}
+          .hours
+            span(ng-show='main.isMobile && outlet.selected', ng-bind='::current.opening_hours')
 
-  .col-xs-12.col-sm-8.col-md-8
+  .col-xs-12.col-sm-8.col-md-8(ng-hide='main.isMobile && outlets.showcase() !== "map"')
     a(name='map')
     map.sl-map(
       height="600",
@@ -41,14 +51,14 @@
             h4(ng-bind='current.mall')
             .address {{::current.address}}
             .metros
-              span.metro(ng-show='current.metros[0]', ng-style='{color: "#"+ current.metros[0].color}')
-                span.icon(ng-style='{backgroundColor: "#"+ current.metros[0].color}')
+              span.metro(ng-show='current.metros[0]')
+                span.metro--icon(ng-style='{backgroundColor: "#"+ current.metros[0].color}')
                 | {{::current.metros[0].name}}
-              span.metro(ng-show='current.metros[1]', ng-style='{color: "#"+ current.metros[0].color}')
-                span.icon(ng-style='{backgroundColor: "#"+ current.metros[1].color}')
+              span.metro(ng-show='current.metros[1]')
+                span.metro--icon(ng-style='{backgroundColor: "#"+ current.metros[1].color}')
                 | {{::current.metros[1].name}}
-              span.metro(ng-show='current.metros[2]', ng-style='{color: "#"+ current.metros[0].color}')
-                span.icon(ng-style='{backgroundColor: "#"+ current.metros[2].color}')
+              span.metro(ng-show='current.metros[2]')
+                span.metro--icon(ng-style='{backgroundColor: "#"+ current.metros[2].color}')
                 | {{::current.metros[2].name}}
 
 

@@ -1,4 +1,6 @@
 .sl-outlets {
+
+
   .region {
     position: relative;
 
@@ -38,10 +40,50 @@
     overflow-x: hidden;
     overflow-y: scroll;
     margin-right: -3em;
+
+    @media (max-width: @screen-xs-max) {
+      margin-right: 0;
+      height: 100%;
+      overflow-y: hidden;
+    }
   }
 
   .outlet-info {
     margin-left: @icon-padding;
+    font-size: .75em;
+
+    .address{
+      font-size: 1.25em;
+    }
+    .metro{
+      line-height: 1em;
+      padding-left: 2.25em;
+    }
+    .hours{
+      font-size: 1.1em;
+      padding-top: .5em;
+    }
+
+    .metro--icon {
+      #metro--icon(1.5em, 1em);
+      top: 0;
+      width: 1.51em;
+    }
+  }
+
+  .outlets--view{
+    button{
+      background: none;
+      border: 0;
+      display: inline-block;
+      padding: 0 1em;
+      line-height: 3em;
+
+      &.outlets--view-active{
+        color: #fff;
+        background: #333;
+      }
+    }
   }
 
   .outlets--search {
@@ -54,10 +96,16 @@
       width: 100%;
       line-height: 2em;
       border: 1px solid #ccc;
-      border-left: 0;
-      border-right: 0;
-      z-index: 10;
+      border-left-color: transparent;
+      border-right-color: transparent;
       background: transparent;
+      transition: border-color 300ms;
+      padding:0 .5em;
+      z-index: 10;
+
+      &:focus{
+        border-color: #bbb;
+      }
 
       &:focus + .outlets--search-icon {
         opacity: 0.25;
@@ -72,8 +120,8 @@
       width: 100%;
       height: 100%;
       background: url('/assets/search.png') no-repeat 50% 50%;
-      z-index: 1;
       transition: opacity 300ms;
+      z-index: 1;
     }
   }
 
@@ -87,6 +135,10 @@
     transition: all 300ms;
     border-left: 3px solid transparent;
 
+    @media (max-width: @screen-xs-max) {
+      margin-right: 0;
+    }
+
     .outlet-title {
       text-transform: uppercase;
       margin-left: @icon-padding;
@@ -95,12 +147,19 @@
       &:before {
         position: absolute;
         top: @icon-padding - @icon;
-        left: -@icon-padding;
+        left: -@icon - .85em;
         width: @icon;
         height: @icon;
         content: '';
         background: url('/assets/marker_list_grey.png') no-repeat 50% 50%;
         background-size: contain;
+        transition: all 300ms;
+      }
+    }
+
+    &:hover{
+      .outlet-title:before{
+        background-image: url('/assets/marker_list_black.png');
       }
     }
 
@@ -111,6 +170,18 @@
       .outlet-title:before {
         background-image: url('/assets/marker_list_red.png');
       }
+    }
+  }
+
+  .metro{
+    font-size: 1.25em;
+    line-height: 3rem;
+    position: relative;
+    padding-left: 3.5rem;
+    top: .25rem;
+
+    .metro--icon {
+      #metro--icon();
     }
   }
 }
@@ -134,32 +205,21 @@
     font-size: 1.75rem;
   }
 
-  .metros{
-    .metro{
-      font-size: 1.25em;
-      line-height: 3rem;
-      position: relative;
-      padding-left: 3.5rem;
-      top: .25rem;
-
-      .icon {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: -.25rem;
-        width: 3rem;
-        height: 2rem;
-        -webkit-mask-image: url('/assets/station.svg'), url('/assets/station.png');
-        mask-image: url('/assets/station.svg'), url('/assets/station.png');
-        -webkit-mask-size: 3rem 2rem;
-        mask-size: 3rem 2rem;
-      }
-    }
-  }
   .hours{
     margin-top: .5rem;
   }
 }
+
+.sl-map {
+  height: 100vw;
+  max-height: 99vh;
+
+  @media (max-width: @screen-xs-max){
+    height: 85vh;
+    margin: 0 -@grid-gutter-width/2;
+  }
+}
+
 .gm-style-iw{
   width: 100% !important;
   top: 0!important;
@@ -170,4 +230,17 @@
   & > div {
     overflow: visible !important;
   }
+}
+
+#metro--icon(@width: 3rem, @height: 2rem) {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -.25rem;
+  width: @width;
+  height: @height;
+  -webkit-mask-image: url('/assets/station.svg'), url('/assets/station.png');
+  mask-image: url('/assets/station.svg'), url('/assets/station.png');
+  -webkit-mask-size: @width @height;
+  mask-size: @width @height;
 }

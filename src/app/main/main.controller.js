@@ -13,15 +13,6 @@ class MainCtrl{
     this.agree = true;
     this.subscribe = true;
     this.isMobile = /android|ip(ad|hone|od)/i.test($window.navigator.userAgent);
-    //
-    //$scope.$on('mapInitialized', () => {
-    //  this.isMapReady = true;
-    //  this.renderMap();
-    //});
-    //this.model.init().then(() => {
-    //  this.isDataReady = true;
-    //  this.renderMap();
-    //});
   }
 
   renderMap(){
@@ -43,11 +34,6 @@ class MainCtrl{
     this.$anchorScroll('map');
   }
 
-  openMap(){
-    if (!this.$scope.map) return;
-  }
-
-
   toggleLimit(){
     this.limit = this.limit ? 4 : null;
   }
@@ -58,7 +44,7 @@ class MainCtrl{
       return;
     }
     this.isLocked = true;
-    this.$http.post('http://promo.love.sl/submitjson/1c4d6fdd-af66-42b6-8c03-798d575f0995/', {
+    this.$http.post('http://promo.love.sl/submitjson/71bf9d85-cee4-11e4-b269-001018f04542/', {
       phone: '7' + String(this.phone),
       subscribed: Boolean(this.subscribe).toString()
     }).then(() => {
