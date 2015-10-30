@@ -44,7 +44,7 @@ class MainCtrl{
       return;
     }
     this.isLocked = true;
-    this.$http.post('http://promo.love.sl/submitjson/71bf9d85-cee4-11e4-b269-001018f04542/', {
+    this.$http.post('http://promo.love.sl/submitjson/1c4d6fdd-af66-42b6-8c03-798d575f0995/', {
       phone: '7' + String(this.phone),
       subscribed: Boolean(this.subscribe).toString()
     }).then(() => {
