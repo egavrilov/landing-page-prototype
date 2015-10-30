@@ -39,15 +39,14 @@ class OutletsController {
         this.bounds.extend(marker);
       }
     });
-    console.log(this.$scope.map);
     this.$scope.google.maps.event.trigger(this.$scope.map, 'resize');
     this.$scope.map.fitBounds(this.bounds);
     this.$scope.map.panToBounds(this.bounds);
+    if (this.$scope.map.zoom > 16 ) this.$scope.map.setZoom(16);
   }
 
   showcase(refresh){
     if (refresh) {
-      console.log(this.$scope);
       this._showcase = refresh;
       this.$timeout(() => {
         this.render();

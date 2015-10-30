@@ -17,17 +17,21 @@ function MainFactory($log, $http, $timeout, $q) {
       outlets: getOutlets()
     }).then((response) => {
       let regionId = response.location.data && response.location.data.region_id || defaultRegion;
-      factory.regions = response.regions.data.filter((region) => regions[region.id] = region);
+      regions = response.regions.data.reduce((regionsObject, region) => {
+        regionsObject[region.id] = region;
+        return regionsObject;
+      }, {});
+      factory.regions = {};
       factory.region = { id: regionId, name: regions[regionId].name };
       outlets = response.outlets.data.filter((outlet) => !outlet.is_franchise);
-      regions = outlets
-        .reduce((outletsObject, outlet) => {
-          if (outlet.region_id && outlet.region_id[0]) {
-            outletsObject[outlet.region_id[0]] = true;
-          }
 
-          return outletsObject;
-        }, {});
+      //available regions with filtered outlets
+      outlets.forEach((outlet) => {
+          if (outlet.region_id && outlet.region_id[0]) {
+            let regionId = outlet.region_id[0];
+            factory.regions[regionId] = regions[regionId];
+          }
+        });
     }, error).then(filterOutlets);
   };
 
