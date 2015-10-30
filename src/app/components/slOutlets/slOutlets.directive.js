@@ -80,7 +80,7 @@ class OutletsController {
 
     scope.current = outlet;
     scope.getKeys = (some) => Object.keys(some).join('\n');
-    outlet.icon = '/assets/marker_active.png';
+    outlet.icon = 'http://cdn1.love.sl/love.sl/common/actions/charm/assets/marker_active.png';
     infoWindow.__open(map, scope, anchor);
 
     if (event !== null) {

@@ -43,7 +43,7 @@
         id='outlet_{{::outlet.id}}',
         position='{{::outlet.geo.join()}}',
         on-click='outlets.openInfo(outlet, outlets)',
-        icon='{{outlet.icon || "/assets/marker.png"}}')
+        icon='{{outlet.icon || "http://cdn1.love.sl/love.sl/common/actions/charm/assets/marker.png"}}')
         info-window(id='info_{{::outlet.id}}',
           visible-on-marker='outlet_{{::outlet.id}}',
           closeclick='outlets.back()')
