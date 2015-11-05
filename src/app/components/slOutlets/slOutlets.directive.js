@@ -105,12 +105,12 @@ class OutletsController {
   }
 
   scroll() {
-    let list = document.querySelector('.outlets--wrapper');
+    let list = document.querySelector('.outlets--wrapper'); //eslint-disable-line angular/document-service
     let selected = list.querySelector('.outlet-selected');
     angular.element(list).animate({
       scrollTop: selected.offsetTop - selected.offsetHeight
     });
-    angular.element(document).scrollTop(window.pageYOffset + list.parentNode.getBoundingClientRect().top)
+    angular.element(document).scrollTop(window.pageYOffset + list.parentNode.getBoundingClientRect().top);  //eslint-disable-line angular/document-service,angular/window-service
   }
 
   filter(outlet) {
