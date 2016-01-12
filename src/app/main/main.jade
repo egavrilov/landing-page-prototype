@@ -11,20 +11,8 @@ include ../components/header/header
             li Посетите любой магазин SUNLIGHT участвующий в акции.
             li Сообщите консультанту Ваш промокод и номер телефона.
             li Получите подарок – один из трех шармов на Ваш выбор *.
-          form.action--form.col-lg-12.row(ng-submit='main.register()')
-            .action--input-phone.col-lg-12.col-md-12.col-sm-6.col-xs-12
-              .action--input-prefix.col-lg-2.col-md-2.col-sm-3.col-xs-3 +7
-              input.col-lg-10.col-md-10.col-sm-9.col-xs-9(type='text', placeholder='___ ___ __ __', ng-model='main.phone', ng-if='!main.isMobile')
-              input.col-lg-10.col-md-10.col-sm-9.col-xs-9(type='number', placeholder='___ ___ __ __', ng-model='main.phone', ng-if='main.isMobile')
-              .action--message-invalid мобильный телефон в формате 9123456789
-              label(for='termsAgree')
-                input(type='checkbox', ng-model='main.agree', id='termsAgree')
-                span &nbsp;Я согласен с условиями акции
-              label(for='subscribe')
-                input(type='checkbox', ng-model='main.subscribe', id='subscribe')
-                span &nbsp;Подписаться на новостную рассылку
-            .action--submit.col-lg-12.col-md-12.col-sm-6.col-xs-12
-              button(type='submit', ng-disabled='!main.agree || main.isLocked', id='getPromoCode') Получить подарок
+          .action-ended
+            p К сожалению, срок действия акции истек.
         .action--message-activated.col-lg-4.col-md-4.col-sm-12.col-xs-12
           h5 Спасибо!
           p ваш подарок ждет Вас <br/> в любом магазине SUNLIGHT!
